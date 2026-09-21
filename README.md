@@ -11,11 +11,11 @@
 
 | Путь | Что это |
 |---|---|
-| `index.html` | исходник для Claude Artifacts (без `<head>`, его добавляет платформа) |
-| `site/index.html` | самостоятельная страница для деплоя — то, что отдаёт Vercel |
-| `build.py` | собирает `site/index.html` из `index.html` |
+| `src/artifact.html` | исходник для Claude Artifacts (без `<head>`, его добавляет платформа) |
+| `index.html` | самостоятельная страница — то, что отдаётся с хостинга |
+| `build.py` | собирает `index.html` из `src/artifact.html` |
 
-После правки `index.html` выполнить `python3 build.py`.
+После правки `src/artifact.html` выполнить `python3 build.py`.
 
 ## Стек
 

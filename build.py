@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-"""Собирает site/index.html (самостоятельная страница) из index.html (исходник артефакта).
+"""Собирает index.html (страница для деплоя) из src/artifact.html (исходник артефакта).
 
-index.html написан для Claude Artifacts: без <!doctype>, <html> и <head> —
+src/artifact.html написан для Claude Artifacts: без <!doctype>, <html> и <head> —
 платформа оборачивает его сама. Для деплоя оболочку нужно добавить руками.
 """
 import io, os, re
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-SRC = os.path.join(ROOT, "index.html")
-OUT = os.path.join(ROOT, "site", "index.html")
+SRC = os.path.join(ROOT, "src", "artifact.html")
+OUT = os.path.join(ROOT, "index.html")
 
 DESC = ("План восхождения на Асаму 22 сентября: сомма Куробу, спуск по J-банду в кальдеру "
         "и выход на Маэкакэ-яму — профиль, дедлайны и свет, меняющийся по ходу скролла.")
@@ -18,7 +18,7 @@ def main():
     src = src.replace('<meta charset="utf-8">\n', '', 1)
     m = re.search(r'<title>(.*?)</title>\n', src)
     if not m:
-        raise SystemExit("в index.html не найден <title>")
+        raise SystemExit("в src/artifact.html не найден <title>")
     title = m.group(1)
     src = src[:m.start()] + src[m.end():]
 

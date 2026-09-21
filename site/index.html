@@ -1,0 +1,1679 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Асама · Кольцо Куробу</title>
+<meta name="description" content="План восхождения на Асаму 22 сентября: сомма Куробу, спуск по J-банду в кальдеру и выход на Маэкакэ-яму — профиль, дедлайны и свет, меняющийся по ходу скролла.">
+<meta name="theme-color" content="#0B0D11">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Асама · Кольцо Куробу">
+<meta property="og:description" content="План восхождения на Асаму 22 сентября: сомма Куробу, спуск по J-банду в кальдеру и выход на Маэкакэ-яму — профиль, дедлайны и свет, меняющийся по ходу скролла.">
+<meta name="robots" content="noindex">
+<style>
+  html{background:#0B0D11;color-scheme:dark}
+  :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+  body{margin:0;font:14px system-ui,-apple-system,"Segoe UI",sans-serif}
+  img{max-width:100%}
+  [hidden]{display:none!important}
+</style>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600&family=Golos+Text:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<style>
+/* ============ TOKENS — single committed visual world: night-volcano briefing ============ */
+:root{
+  --basalt:#0B0D11;
+  --basalt-2:#12151B;
+  --scoria:#181C24;
+  --scoria-2:#1F242E;
+  --hairline:rgba(190,196,180,.13);
+  --hairline-2:rgba(190,196,180,.07);
+  --ash:#8B8D80;          /* neutral with olive bias — volcanic ash, not mid-grey */
+  --ash-dim:#6A6D63;
+  --ash-hi:#D7D8CE;
+  --paper:#EFEDE4;
+  --magma:#E2542B;
+  --magma-dim:#A63A1C;
+  --sulfur:#F0B429;
+  --glacier:#7FB6D4;
+  --glacier-dim:#4B7A94;
+  --moss:#7E9464;
+
+  --f-disp:"Oswald","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Golos Text","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"IBM Plex Mono","SFMono-Regular",Menlo,monospace;
+  --f-jp:"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",sans-serif;
+
+  --gut:clamp(18px,4.2vw,44px);
+  --col:min(1120px,100%);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--basalt);
+  color:var(--ash-hi);
+  font-family:var(--f-body);
+  font-size:16px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+::selection{background:var(--magma);color:#fff}
+a{color:var(--glacier)}
+
+/* ============ WEBGL STAGE ============ */
+#stage{position:fixed;inset:0;z-index:0;pointer-events:none}
+#stage canvas{display:block;width:100%;height:100%}
+#fallback{position:fixed;inset:0;z-index:0;
+  background:
+    radial-gradient(120% 80% at 70% 8%, #2A3242 0%, transparent 58%),
+    radial-gradient(90% 60% at 20% 90%, #241A19 0%, transparent 60%),
+    linear-gradient(#0E1219,#0B0D11);}
+#veil{position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(11,13,17,.62) 0%,rgba(11,13,17,.12) 22%,rgba(11,13,17,.10) 62%,rgba(11,13,17,.72) 100%);}
+#grain{position:fixed;inset:-50%;z-index:2;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+  animation:grainShift 6s steps(6) infinite;}
+@keyframes grainShift{0%{transform:translate(0,0)}25%{transform:translate(-2%,1%)}50%{transform:translate(1%,-2%)}75%{transform:translate(2%,2%)}100%{transform:translate(0,0)}}
+
+/* ============ SHELL ============ */
+#doc{position:relative;z-index:3}
+.wrap{width:var(--col);margin-inline:auto;padding-inline:var(--gut)}
+section{padding-block:clamp(68px,10vh,128px)}
+
+/* ============ TYPE ============ */
+.eyebrow{
+  font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--ash-dim);display:flex;align-items:center;gap:12px;margin:0 0 18px;
+}
+.eyebrow::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--hairline),transparent)}
+.eyebrow b{color:var(--magma);font-weight:500}
+h2{
+  font-family:var(--f-disp);font-weight:300;font-size:clamp(30px,5.4vw,54px);
+  line-height:1.03;letter-spacing:-.012em;margin:0 0 10px;color:var(--paper);text-wrap:balance;
+}
+h2 em{font-style:normal;color:var(--magma)}
+.lede{max-width:62ch;color:var(--ash);font-size:clamp(15px,1.6vw,17px);margin:0 0 34px}
+.jp{font-family:var(--f-jp);font-weight:500}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+
+/* ============ HERO ============ */
+#hero{min-height:88vh;display:flex;flex-direction:column;justify-content:flex-end;
+  padding-block:clamp(90px,14vh,150px) clamp(40px,7vh,80px)}
+.hero-kicker{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:26px}
+.tag{
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  padding:5px 11px;border:1px solid var(--hairline);border-radius:2px;color:var(--ash);
+  background:rgba(18,21,27,.55);backdrop-filter:blur(8px);
+}
+.tag.hot{border-color:rgba(226,84,43,.45);color:#F09E7F;background:rgba(226,84,43,.10)}
+.hero-title{position:relative;margin:0}
+.hero-jp{
+  font-family:var(--f-jp);font-weight:700;color:var(--paper);
+  font-size:clamp(62px,15.5vw,190px);line-height:.86;letter-spacing:.01em;
+  display:block;text-shadow:0 14px 60px rgba(0,0,0,.6);
+}
+.hero-lat{
+  font-family:var(--f-disp);font-weight:200;letter-spacing:.42em;text-transform:uppercase;
+  font-size:clamp(13px,2.4vw,26px);color:var(--ash);display:block;margin-top:clamp(10px,1.6vw,18px);
+  padding-left:.3em;
+}
+.hero-rule{height:1px;background:linear-gradient(90deg,var(--magma),rgba(226,84,43,0) 62%);margin:clamp(26px,4vw,40px) 0 22px;
+  transform-origin:left;animation:ruleIn 1.4s cubic-bezier(.16,1,.3,1) .2s both}
+@keyframes ruleIn{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.hero-sub{display:flex;flex-wrap:wrap;gap:clamp(22px,4vw,54px);align-items:flex-end}
+.hero-sub p{margin:0;max-width:34ch;color:var(--ash);font-size:15px}
+
+.figs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--hairline-2);
+  border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);margin-top:clamp(30px,5vw,48px)}
+.fig{background:rgba(11,13,17,.42);backdrop-filter:blur(10px);padding:18px 16px 16px}
+.fig .v{font-family:var(--f-disp);font-weight:300;font-size:clamp(28px,4.6vw,46px);line-height:1;color:var(--paper);
+  font-variant-numeric:tabular-nums;display:block}
+.fig .v i{font-style:normal;font-size:.44em;color:var(--ash-dim);margin-left:.22em;letter-spacing:.04em}
+.fig .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.17em;text-transform:uppercase;color:var(--ash-dim);margin-top:9px;display:block}
+@media(max-width:700px){.figs{grid-template-columns:repeat(2,1fr)}}
+
+.scroll-cue{margin-top:clamp(34px,6vh,64px);display:flex;align-items:center;gap:12px;
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ash-dim)}
+.scroll-cue .bar{width:46px;height:1px;background:var(--hairline);position:relative;overflow:hidden}
+.scroll-cue .bar::after{content:"";position:absolute;inset:0;width:40%;background:var(--magma);animation:cue 2.4s cubic-bezier(.65,0,.35,1) infinite}
+@keyframes cue{0%{transform:translateX(-110%)}60%,100%{transform:translateX(260%)}}
+
+/* ============ HUD ============ */
+#hud{
+  position:fixed;right:clamp(12px,2vw,26px);top:50%;transform:translateY(-50%);z-index:6;
+  width:186px;padding:16px 16px 14px;border:1px solid var(--hairline);border-radius:3px;
+  background:rgba(11,13,17,.74);backdrop-filter:blur(14px) saturate(1.2);
+  font-family:var(--f-mono);opacity:0;transition:opacity .5s ease;pointer-events:none;
+}
+#hud.on{opacity:1}
+.hud-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.hud-clock{font-family:var(--f-disp);font-weight:300;font-size:34px;line-height:1;color:var(--paper);font-variant-numeric:tabular-nums}
+.hud-light{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--sulfur);text-align:right;max-width:70px;line-height:1.3}
+.hud-where{margin-top:12px;font-family:var(--f-jp);font-size:15px;color:var(--ash-hi);min-height:22px}
+.hud-where small{display:block;font-family:var(--f-body);font-size:11px;color:var(--ash-dim);letter-spacing:.02em}
+.hud-nums{display:flex;gap:14px;margin-top:12px;padding-top:11px;border-top:1px solid var(--hairline-2)}
+.hud-nums div{font-size:10px;letter-spacing:.1em;color:var(--ash-dim);text-transform:uppercase}
+.hud-nums b{display:block;font-size:16px;font-weight:500;color:var(--ash-hi);letter-spacing:0;font-variant-numeric:tabular-nums}
+.hud-spine{margin-top:13px;height:3px;background:var(--hairline-2);position:relative;border-radius:2px;overflow:hidden}
+.hud-spine i{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,var(--glacier),var(--sulfur),var(--magma));width:0%}
+@media(max-width:940px){
+  #hud{top:auto;bottom:0;right:0;left:0;transform:none;width:auto;border-radius:0;
+    border-left:0;border-right:0;border-bottom:0;display:flex;align-items:center;gap:14px;
+    padding:9px var(--gut) calc(9px + env(safe-area-inset-bottom,0px))}
+  .hud-clock{font-size:22px}
+  .hud-where{margin:0;font-size:13px;flex:1;min-height:0}
+  .hud-where small{display:none}
+  .hud-nums{margin:0;padding:0;border:0;gap:10px}
+  .hud-nums b{font-size:13px}
+  .hud-light{display:none}
+  .hud-spine{position:absolute;top:0;left:0;right:0;margin:0;height:2px;border-radius:0}
+}
+@media(max-width:480px){.hud-nums div:last-child{display:none}}
+
+/* ============ REVEAL (rests visible, never hidden) ============ */
+.rv{opacity:.34;transform:translateY(16px);filter:blur(1.5px);
+  transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1),filter .85s ease}
+.rv.in{opacity:1;transform:none;filter:none}
+.rv.d1{transition-delay:.07s}.rv.d2{transition-delay:.14s}.rv.d3{transition-delay:.21s}.rv.d4{transition-delay:.28s}
+
+/* ============ PROFILE CHART ============ */
+.chart-shell{position:relative;border:1px solid var(--hairline);border-radius:3px;
+  background:linear-gradient(180deg,rgba(24,28,36,.82),rgba(11,13,17,.86));backdrop-filter:blur(12px);overflow:hidden}
+.chart-scroll{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}
+.chart-scroll svg{display:block;min-width:720px;width:100%;height:auto}
+.chart-legend{display:flex;flex-wrap:wrap;gap:6px 20px;padding:12px 16px;border-top:1px solid var(--hairline-2);
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--ash-dim)}
+.chart-legend span{display:flex;align-items:center;gap:7px}
+.chart-legend i{width:16px;height:7px;border-radius:1px;display:block}
+#tip{position:absolute;pointer-events:none;opacity:0;transition:opacity .16s ease;z-index:4;
+  background:rgba(8,10,14,.95);border:1px solid var(--hairline);border-radius:3px;padding:9px 11px;min-width:128px;
+  box-shadow:0 12px 34px rgba(0,0,0,.6)}
+#tip .t-jp{font-family:var(--f-jp);font-size:14px;color:var(--paper);line-height:1.3}
+#tip .t-ru{font-size:11px;color:var(--ash-dim);margin-top:1px}
+#tip .t-row{display:flex;gap:12px;margin-top:7px;padding-top:7px;border-top:1px solid var(--hairline-2);
+  font-family:var(--f-mono);font-size:12px;color:var(--ash-hi);font-variant-numeric:tabular-nums}
+#tip .t-row b{color:var(--magma);font-weight:500}
+
+/* ============ TIMETABLE ============ */
+.tt{border-top:1px solid var(--hairline)}
+.tt-row{display:grid;grid-template-columns:78px 1fr 13px;gap:clamp(12px,2.6vw,28px);align-items:baseline;
+  padding:14px 0 13px;border-bottom:1px solid var(--hairline-2);position:relative;transition:background .3s ease}
+.tt-row:hover{background:rgba(226,84,43,.045)}
+.tt-t{font-family:var(--f-mono);font-size:15px;font-weight:500;color:var(--paper);font-variant-numeric:tabular-nums}
+.tt-main .n{font-family:var(--f-jp);font-size:16px;color:var(--ash-hi);display:block}
+.tt-main .n b{font-family:var(--f-mono);font-weight:400;font-size:12px;color:var(--ash-dim);margin-left:9px;letter-spacing:.04em}
+.tt-main .d{font-size:13px;color:var(--ash-dim);margin-top:2px}
+.tt-dot{width:7px;height:7px;border-radius:50%;background:var(--hairline);align-self:center;justify-self:end}
+.tt-row[data-k="peak"] .tt-dot{background:var(--glacier);box-shadow:0 0 0 3px rgba(127,182,212,.14)}
+.tt-row[data-k="summit"] .tt-dot{background:var(--magma);box-shadow:0 0 0 4px rgba(226,84,43,.2),0 0 14px var(--magma)}
+.tt-row[data-k="summit"] .tt-t,.tt-row[data-k="summit"] .n{color:var(--magma)}
+.tt-row[data-k="crux"] .tt-dot{background:var(--sulfur);box-shadow:0 0 0 3px rgba(240,180,41,.15)}
+.tt-row[data-k="drive"] .tt-dot{background:transparent;border:1px solid var(--ash-dim)}
+@media(max-width:520px){.tt-row{grid-template-columns:62px 1fr 9px;gap:12px}.tt-t{font-size:13px}}
+
+/* ============ DEADLINES ============ */
+.dl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:1px;background:var(--hairline-2);
+  border:1px solid var(--hairline)}
+.dl{background:var(--basalt-2);padding:22px 20px 20px;position:relative;overflow:hidden;transition:background .35s ease}
+.dl::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--sulfur);
+  transform:scaleY(0);transform-origin:top;transition:transform .7s cubic-bezier(.16,1,.3,1)}
+.dl.in::before{transform:scaleY(1)}
+.dl:hover{background:#20181B}
+.dl-t{font-family:var(--f-disp);font-weight:400;font-size:38px;line-height:1;color:var(--sulfur);
+  font-variant-numeric:tabular-nums;display:block}
+.dl-w{font-family:var(--f-jp);font-size:14px;color:var(--ash-hi);margin-top:10px}
+.dl-c{font-size:13px;color:var(--ash);margin-top:8px;line-height:1.5}
+.dl-c b{color:var(--paper);font-weight:500}
+.dl[data-sev="hard"]::before{background:var(--magma)}
+.dl[data-sev="hard"] .dl-t{color:var(--magma)}
+
+/* ============ WEATHER ============ */
+.wx{display:grid;grid-template-columns:1.1fr .9fr;gap:1px;background:var(--hairline-2);border:1px solid var(--hairline)}
+@media(max-width:820px){.wx{grid-template-columns:1fr}}
+.wx-pane{background:rgba(18,21,27,.78);backdrop-filter:blur(10px);padding:clamp(18px,3vw,26px)}
+.wx-pane h3{font-family:var(--f-mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ash-dim);margin:0 0 18px;font-weight:500}
+.wx-strip{display:flex;flex-direction:column;gap:0}
+.wx-row{display:grid;grid-template-columns:58px 1fr auto;gap:14px;align-items:center;padding:11px 0;
+  border-bottom:1px solid var(--hairline-2)}
+.wx-row:last-child{border-bottom:0}
+.wx-row .h{font-family:var(--f-mono);font-size:12px;color:var(--ash-dim);font-variant-numeric:tabular-nums}
+.wx-row .n{font-size:13px;color:var(--ash-hi)}
+.wx-row .n small{display:block;font-family:var(--f-mono);font-size:10px;color:var(--ash-dim);letter-spacing:.06em}
+.wx-row .deg{font-family:var(--f-disp);font-weight:300;font-size:26px;line-height:1;font-variant-numeric:tabular-nums}
+.wx-facts{display:flex;flex-direction:column;gap:14px}
+.wx-fact{display:flex;gap:14px;align-items:flex-start}
+.wx-fact .ic{width:30px;height:30px;flex:none;border:1px solid var(--hairline);border-radius:50%;
+  display:grid;place-items:center;font-family:var(--f-mono);font-size:11px;color:var(--glacier)}
+.wx-fact p{margin:0;font-size:13.5px;color:var(--ash);line-height:1.5}
+.wx-fact p b{color:var(--paper);font-weight:500;display:block;font-size:13px;letter-spacing:.01em}
+
+/* ============ DRIVE ============ */
+.drive{overflow-x:auto;padding-bottom:10px}
+.drive-rail{display:flex;align-items:stretch;gap:0;min-width:max-content;padding:4px 0}
+.dn{display:flex;align-items:center;gap:0}
+.dn .node{padding:11px 15px;border:1px solid var(--hairline);border-radius:2px;background:rgba(18,21,27,.7);
+  white-space:nowrap;transition:border-color .3s ease,transform .3s ease}
+.dn:hover .node{border-color:var(--magma);transform:translateY(-2px)}
+.dn .node .a{font-family:var(--f-jp);font-size:14px;color:var(--ash-hi);display:block}
+.dn .node .b{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ash-dim);margin-top:2px}
+.dn .link{width:clamp(16px,3vw,34px);height:1px;background:var(--hairline);flex:none}
+.dn:last-child .link{display:none}
+.dn.term .node{border-color:rgba(226,84,43,.5);background:rgba(226,84,43,.08)}
+.dn.term .node .a{color:#F3A489}
+
+/* ============ KIT ============ */
+.kit{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:clamp(16px,2.6vw,28px)}
+.kit-col h3{font-family:var(--f-mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--magma);
+  margin:0 0 4px;font-weight:500}
+.kit-col .sub{font-size:12px;color:var(--ash-dim);margin:0 0 14px}
+.kit-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--hairline-2)}
+.kit-list li{border-bottom:1px solid var(--hairline-2)}
+.kit-list label{display:flex;gap:11px;align-items:flex-start;padding:9px 2px;cursor:pointer;font-size:14px;color:var(--ash);
+  transition:color .2s ease}
+.kit-list label:hover{color:var(--ash-hi)}
+.kit-list input{position:absolute;opacity:0;width:0;height:0}
+.box{width:15px;height:15px;flex:none;margin-top:4px;border:1px solid var(--ash-dim);border-radius:2px;position:relative;
+  transition:border-color .2s ease,background .2s ease}
+.box::after{content:"";position:absolute;left:4px;top:.5px;width:4px;height:9px;border:solid var(--basalt);
+  border-width:0 2px 2px 0;transform:rotate(42deg) scale(0);transition:transform .22s cubic-bezier(.34,1.56,.64,1)}
+.kit-list input:checked + .box{background:var(--moss);border-color:var(--moss)}
+.kit-list input:checked + .box::after{transform:rotate(42deg) scale(1)}
+.kit-list input:focus-visible + .box{outline:2px solid var(--glacier);outline-offset:2px}
+.kit-list input:checked ~ .tx{color:var(--ash-dim);text-decoration:line-through;text-decoration-color:rgba(139,141,128,.45)}
+.tx b{color:var(--paper);font-weight:500}
+.kit-meter{display:flex;align-items:center;gap:12px;margin-top:26px;font-family:var(--f-mono);font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ash-dim)}
+.kit-meter .track{flex:1;height:2px;background:var(--hairline-2);position:relative;max-width:340px}
+.kit-meter .track i{position:absolute;inset:0;width:0;background:var(--moss);transition:width .4s cubic-bezier(.16,1,.3,1)}
+
+/* ============ VOLCANO ALERT ============ */
+.alert{border:1px solid rgba(240,180,41,.3);border-radius:3px;overflow:hidden;
+  background:linear-gradient(135deg,rgba(240,180,41,.07),rgba(18,21,27,.85));backdrop-filter:blur(10px)}
+.alert-head{display:flex;align-items:center;gap:18px;padding:20px clamp(18px,3vw,26px);border-bottom:1px solid rgba(240,180,41,.18);flex-wrap:wrap}
+.lvl{width:58px;height:58px;flex:none;border:2px solid var(--sulfur);border-radius:50%;display:grid;place-items:center;
+  font-family:var(--f-disp);font-weight:400;font-size:30px;color:var(--sulfur);position:relative}
+.lvl::after{content:"";position:absolute;inset:-7px;border:1px solid rgba(240,180,41,.3);border-radius:50%;
+  animation:pulse 3.2s cubic-bezier(.4,0,.6,1) infinite}
+@keyframes pulse{0%{transform:scale(.92);opacity:.9}70%,100%{transform:scale(1.28);opacity:0}}
+.alert-head .txt b{display:block;font-family:var(--f-jp);font-size:17px;color:var(--paper)}
+.alert-head .txt span{font-size:13px;color:var(--ash)}
+.alert-body{padding:20px clamp(18px,3vw,26px);display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:20px}
+.alert-item .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.17em;text-transform:uppercase;color:var(--ash-dim);margin-bottom:6px}
+.alert-item .v{font-size:14px;color:var(--ash-hi);line-height:1.5}
+.alert-item .v b{color:var(--sulfur);font-weight:500}
+
+/* ============ CLOSER ============ */
+#closer{text-align:center;padding-block:clamp(90px,16vh,190px)}
+.closer-time{font-family:var(--f-disp);font-weight:200;font-size:clamp(66px,17vw,180px);line-height:.9;
+  color:var(--paper);font-variant-numeric:tabular-nums;letter-spacing:-.02em;
+  background:linear-gradient(180deg,#FFD9A8,#E2542B 58%,#6E2A18);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent}
+.closer-lbl{font-family:var(--f-mono);font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--ash-dim);margin-top:14px}
+.closer-note{max-width:46ch;margin:26px auto 0;color:var(--ash);font-size:15px}
+footer{border-top:1px solid var(--hairline-2);padding-block:26px 40px;
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ash-dim);
+  display:flex;flex-wrap:wrap;gap:8px 26px;justify-content:space-between}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;filter:none;transition:none}
+  #grain{animation:none}
+  .lvl::after{animation:none}
+  .scroll-cue .bar::after{animation:none;transform:none;width:100%}
+  .hero-rule{animation:none}
+}
+</style>
+
+<div id="fallback"></div>
+<div id="stage"></div>
+<div id="veil"></div>
+<div id="grain"></div>
+
+<aside id="hud" aria-hidden="true">
+  <div class="hud-spine"><i id="hudBar"></i></div>
+  <div class="hud-top">
+    <div class="hud-clock" id="hudClock">9:45</div>
+    <div class="hud-light" id="hudLight">облачно</div>
+  </div>
+  <div class="hud-where" id="hudWhere">車坂峠<small>Курумадзака-тōге</small></div>
+  <div class="hud-nums">
+    <div>альт<b id="hudAlt">1973</b></div>
+    <div>км<b id="hudKm">0.0</b></div>
+    <div>+набор<b id="hudUp">0</b></div>
+  </div>
+</aside>
+
+<main id="doc">
+
+<section id="hero" class="wrap">
+  <div class="hero-kicker">
+    <span class="tag">Вторник 22.09</span>
+    <span class="tag">Нагано · Гумма</span>
+    <span class="tag hot">Действующий вулкан · уровень 1</span>
+  </div>
+  <h1 class="hero-title">
+    <span class="hero-jp">浅間山</span>
+    <span class="hero-lat">Asama · Кольцо Куробу</span>
+  </h1>
+  <div class="hero-rule"></div>
+  <div class="hero-sub">
+    <p>Полная подкова соммы Куробу, спуск по Jバンド на дно кальдеры и выход на 前掛山 под золотой час. Обратно через 草すべり, финиш с фонарями.</p>
+  </div>
+
+  <div class="figs">
+    <div class="fig"><span class="v" data-count="18.6" data-dec="1">0<i>км</i></span><span class="k">Длина кольца</span></div>
+    <div class="fig"><span class="v" data-count="1560">0<i>м</i></span><span class="k">Набор высоты</span></div>
+    <div class="fig"><span class="v" data-count="9">0<i>ч</i></span><span class="k">Ходового времени</span></div>
+    <div class="fig"><span class="v" data-count="2524">0<i>м</i></span><span class="k">Максимум · 前掛山</span></div>
+  </div>
+
+  <div class="scroll-cue"><span class="bar"></span><span>Листай — и день пойдёт</span></div>
+</section>
+
+<section id="profile" class="wrap">
+  <p class="eyebrow"><b>01</b> Профиль</p>
+  <h2>Весь день <em>в одной линии</em></h2>
+  <p class="lede">Горизонталь — километры, вертикаль — высота, фон — свет. Всё, что правее заката, идётся с налобником.</p>
+  <div class="chart-shell rv">
+    <div class="chart-scroll"><svg id="prof" viewBox="0 0 1000 380" role="img" aria-label="Профиль высот маршрута Асама: старт 1973 м, максимум 2524 м на 前掛山, финиш 1973 м"></svg></div>
+    <div class="chart-legend">
+      <span><i style="background:#3B424E"></i>облачно · до 12:00</span>
+      <span><i style="background:#2F4E6B"></i>ясно</span>
+      <span><i style="background:#7A5530"></i>низкое солнце</span>
+      <span><i style="background:#6B2E2A"></i>закат 17:44</span>
+      <span><i style="background:#14171F"></i>темнота</span>
+      <span><i style="background:#F0B429"></i>дедлайн</span>
+    </div>
+    <div id="tip"></div>
+  </div>
+</section>
+
+<section id="timing" class="wrap">
+  <p class="eyebrow"><b>02</b> Нитка и тайминг</p>
+  <h2>Тридцать четыре точки <em>принятия решений</em></h2>
+  <p class="lede">Оранжевым — вершина дня. Жёлтым — ключевые места, где маршрут перестаёт быть обратимым.</p>
+  <div class="tt rv" id="tt"></div>
+</section>
+
+<section id="deadlines" class="wrap">
+  <p class="eyebrow"><b>03</b> Дедлайны</p>
+  <h2>Четыре времени, <em>с которыми не спорят</em></h2>
+  <p class="lede">Проверяем часы на этих точках и решаем сразу — без «ну ещё двадцать минут».</p>
+  <div class="dl-grid">
+    <div class="dl rv" data-sev="soft"><span class="dl-t">13:20</span>
+      <div class="dl-w">鋸岳 · Нокогири-даке</div>
+      <p class="dl-c">Позже — <b>кальдера без 前掛山</b>. Спускаемся по Jバンド и сразу идём на выход.</p></div>
+    <div class="dl rv d1" data-sev="soft"><span class="dl-t">14:15</span>
+      <div class="dl-w">湯の平 · выход на конус</div>
+      <p class="dl-c">Позже — на вершину не выходим. Сразу <b>草すべり</b>, финиш около 16:10.</p></div>
+    <div class="dl rv d2" data-sev="hard"><span class="dl-t">15:45</span>
+      <div class="dl-w">Жёсткий разворот</div>
+      <p class="dl-c">Где бы ни были на подъёме к 前掛山 — <b>разворачиваемся</b>. Без обсуждений.</p></div>
+    <div class="dl rv d3" data-sev="hard"><span class="dl-t">17:00</span>
+      <div class="dl-w">草すべり · начало подъёма</div>
+      <p class="dl-c">Последний срок встать на взлёт. Иначе <b>закат ловим на стене</b>, а не на гребне.</p></div>
+  </div>
+</section>
+
+<section id="weather" class="wrap">
+  <p class="eyebrow"><b>04</b> Погода · tenki.jp</p>
+  <h2>Утро серое, <em>день чистый</em></h2>
+  <p class="lede">До полудня облачно, дождь 20–30%. С 12:00 — ясно, 0%, ветер 2–3 м/с. Закат 17:44.</p>
+  <div class="wx">
+    <div class="wx-pane rv">
+      <h3>Температура по точкам</h3>
+      <div class="wx-strip" id="wxStrip"></div>
+    </div>
+    <div class="wx-pane rv d1">
+      <h3>Что это значит на земле</h3>
+      <div class="wx-facts">
+        <div class="wx-fact"><span class="ic">H₂O</span><p><b>Тропа мокрая после тайфуна</b>Камни на гребне скользкие, 草すべり держит воду — вниз по нему не идём, только вверх.</p></div>
+        <div class="wx-fact"><span class="ic">ASH</span><p><b>На 前掛山 шлак и пепел</b>Мягко под ногой, но набивается в ботинки. Гетры обязательны.</p></div>
+        <div class="wx-fact"><span class="ic">−8°</span><p><b>Перепад за день</b>От 17° на дне кальдеры до 9–10° на финише. Пуховик достаём на вершине, не раньше.</p></div>
+        <div class="wx-fact"><span class="ic">UV</span><p><b>Открытый гребень 2 часа</b>С 11:15 до 13:10 тени нет вообще. SPF 50, кепка, очки.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="drive" class="wrap">
+  <p class="eyebrow"><b>05</b> Дорога</p>
+  <h2>Икэбукуро → 車坂峠 · <em>2 ч 45 мин</em></h2>
+  <p class="lede">Выезд 6:30, парковка у 高峰高原ビジターセンター около 9:15. Старт с тропы — 9:45.</p>
+  <div class="drive rv">
+    <div class="drive-rail">
+      <div class="dn term"><div class="node"><span class="a jp">池袋</span><span class="b">06:30 · старт</span></div><span class="link"></span></div>
+      <div class="dn"><div class="node"><span class="a jp">首都高 5号</span><span class="b">Сюто</span></div><span class="link"></span></div>
+      <div class="dn"><div class="node"><span class="a jp">外環道</span><span class="b">Гайкан</span></div><span class="link"></span></div>
+      <div class="dn"><div class="node"><span class="a jp">大泉JCT</span><span class="b">развязка</span></div><span class="link"></span></div>
+      <div class="dn"><div class="node"><span class="a jp">関越道</span><span class="b">Кан-Эцу</span></div><span class="link"></span></div>
+      <div class="dn"><div class="node"><span class="a jp">藤岡JCT</span><span class="b">развязка</span></div><span class="link"></span></div>
+      <div class="dn"><div class="node"><span class="a jp">上信越道</span><span class="b">Дзёсинэцу</span></div><span class="link"></span></div>
+      <div class="dn"><div class="node"><span class="a jp">小諸IC</span><span class="b">съезд</span></div><span class="link"></span></div>
+      <div class="dn"><div class="node"><span class="a jp">チェリーパークライン</span><span class="b">серпантин</span></div><span class="link"></span></div>
+      <div class="dn term"><div class="node"><span class="a jp">車坂峠 1973м</span><span class="b">09:15 · парковка</span></div><span class="link"></span></div>
+    </div>
+  </div>
+</section>
+
+<section id="kit" class="wrap">
+  <p class="eyebrow"><b>06</b> Снаряжение</p>
+  <h2>Отмечай, <em>что уже в рюкзаке</em></h2>
+  <p class="lede">Отметки сохраняются в этом браузере — можно собираться в несколько заходов.</p>
+  <div class="kit rv" id="kit"></div>
+  <div class="kit-meter"><span id="kitCount">0 / 0</span><span class="track"><i id="kitBar"></i></span><span>собрано</span></div>
+</section>
+
+<section id="volcano" class="wrap">
+  <p class="eyebrow"><b>07</b> Вулкан</p>
+  <h2>Асама <em>живая</em></h2>
+  <p class="lede">Последнее заметное извержение — 2019. Кратер 釜山 парит постоянно, это норма. Ненормально — запах серы и пепел на тропе.</p>
+  <div class="alert rv">
+    <div class="alert-head">
+      <div class="lvl">1</div>
+      <div class="txt"><b class="jp">噴火警戒レベル 1 — 活火山であることに留意</b><span>Уровень тревоги 1. Помнить, что вулкан действующий.</span></div>
+    </div>
+    <div class="alert-body">
+      <div class="alert-item"><div class="k">Маршрут</div><div class="v"><b class="jp">前掛山 открыт.</b> Подъём по южному гребню конуса разрешён.</div></div>
+      <div class="alert-item"><div class="k">Закрытая зона</div><div class="v"><b>500 м от кратера.</b> Вершина 釜山 (2568) вне доступа — верхняя точка дня именно 前掛山.</div></div>
+      <div class="alert-item"><div class="k">Укрытия</div><div class="v">Два бетонных шелтера на гребне 前掛山. Отмечаем на подходе.</div></div>
+      <div class="alert-item"><div class="k">Сигнал отхода</div><div class="v"><b>Запах серы или пепел под ногами</b> — сразу вниз, в 湯の平, без обсуждения вершины.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="closer" class="wrap">
+  <div class="closer-time rv">17:44</div>
+  <div class="closer-lbl rv d1">Закат · где-то на 草すべり</div>
+  <p class="closer-note rv d2">К этому моменту мы должны быть на подъёме, а не на дне кальдеры. Всё остальное в этом плане — только про то, как туда попасть вовремя.</p>
+  <footer class="rv d3">
+    <span>浅間山 2568 m · 前掛山 2524 m</span>
+    <span>Офлайн-трек в YAMAP · фонарь на каждого</span>
+    <span>22.09</span>
+  </footer>
+</section>
+
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* =====================================================================
+   АСАМА · КОЛЬЦО КУРОБУ
+   Скролл = ход дня. Свет, камера и нитка маршрута привязаны к одному
+   параметру j ∈ [0,1] — прогрессу по времени выхода.
+   ===================================================================== */
+(function(){
+"use strict";
+
+var RM = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- утилиты ---------- */
+function clamp(v,a,b){ return v<a?a:(v>b?b:v); }
+function lerp(a,b,t){ return a+(b-a)*t; }
+function smoothstep(e0,e1,x){ var t=clamp((x-e0)/(e1-e0),0,1); return t*t*(3-2*t); }
+function smax(a,b,k){ var h=Math.max(0,1-Math.abs(a-b)/k); return Math.max(a,b)+h*h*k*0.25; }
+function hash2(x,y){ var n=Math.sin(x*127.1+y*311.7)*43758.5453123; return n-Math.floor(n); }
+function vnoise(x,y){
+  var xi=Math.floor(x), yi=Math.floor(y), xf=x-xi, yf=y-yi;
+  var u=xf*xf*(3-2*xf), v=yf*yf*(3-2*yf);
+  var a=hash2(xi,yi), b=hash2(xi+1,yi), c=hash2(xi,yi+1), d=hash2(xi+1,yi+1);
+  return (a*(1-u)+b*u)*(1-v)+(c*(1-u)+d*u)*v;
+}
+function fbm(x,y,oct){ var s=0,a=0.5,f=1; for(var i=0;i<oct;i++){ s+=a*vnoise(x*f,y*f); f*=2.07; a*=0.5; } return s; }
+
+/* =====================================================================
+   1. ДАННЫЕ МАРШРУТА
+   ===================================================================== */
+
+/* Профиль: [км, высота м, японское имя, русское, время, тип] */
+var PROFILE = [
+  [0.0 ,1973,"車坂峠","Курумадзака-тōге","9:45","start"],
+  [0.9 ,2072,null,null,null,null],
+  [1.8 ,2160,"槍ヶ鞘","Яригасая","10:35","node"],
+  [2.6 ,2295,"トーミの頭","Тōми-но-касира","11:15","peak"],
+  [3.2 ,2404,"黒斑山","Куробу-яма","11:35","peak"],
+  [4.2 ,2366,"蛇骨岳","Дзякоцу-даке","12:10","peak"],
+  [5.1 ,2319,"仙人岳","Сэннин-даке","12:35","peak"],
+  [5.9 ,2254,"鋸岳","Нокогири-даке","12:55","peak"],
+  [6.4 ,2205,"Jバンド","Джей-бэнд","13:10","crux"],
+  [7.0 ,2078,null,null,null,null],
+  [8.0 ,2050,"湯の平","Юнотайра","13:50","low"],
+  [8.9 ,2105,"賽の河原","Сай-но-кавара","14:10","node"],
+  [10.0,2285,null,null,"15:00",null],
+  [11.3,2524,"前掛山","Маэкакэ-яма","15:30","summit"],
+  [12.6,2262,null,null,"16:05",null],
+  [13.7,2105,"賽の河原","Сай-но-кавара","16:25","node"],
+  [14.3,2050,"湯の平","Юнотайра","16:40","low"],
+  [15.0,2158,"草すべり","Кусасубэри","17:15","crux"],
+  [15.6,2252,null,null,"17:44","sunset"],
+  [15.9,2295,"トーミの頭","Тōми-но-касира","17:55","peak"],
+  [17.2,2118,null,null,"18:20",null],
+  [18.6,1973,"車坂峠","Курумадзака-тōге","18:45","finish"]
+];
+
+/* Световые полосы по километражу */
+var BANDS = [
+  [0.0 , 3.6 ,"#3B424E",.30,"облачно"],
+  [3.6 ,10.2 ,"#2F4E6B",.30,"ясно"],
+  [10.2,15.55,"#7A5530",.32,"низкое солнце"],
+  [15.55,16.35,"#6B2E2A",.40,"закат"],
+  [16.35,18.6,"#14171F",.55,"темнота"]
+];
+
+/* Дедлайны на профиле */
+var CUTS = [
+  [5.9 ,"13:20","鋸岳","soft"],
+  [8.9 ,"14:15","湯の平 → конус","soft"],
+  [10.6,"15:45","разворот","hard"],
+  [14.3,"17:00","草すべり","hard"]
+];
+
+/* Расписание для таблицы */
+var TIMETABLE = [
+  ["6:30" ,"池袋","Выезд из Икэбукуро","drive"],
+  ["9:15" ,"高峰高原ビジターセンター","Парковка, 1973 м","drive"],
+  ["9:45" ,"車坂峠","Старт. 表コース, лес","node"],
+  ["11:15","トーミの頭","Первый вид на вулкан, 2295 м","peak"],
+  ["11:35","黒斑山","Высшая точка соммы, 2404 м","peak"],
+  ["12:10","蛇骨岳","Гребень открывается на север","peak"],
+  ["12:35","仙人岳","Открытый гребень, 2319 м","peak"],
+  ["12:55","鋸岳","Перекус 15 минут, 2254 м","peak"],
+  ["13:10","Jバンド","Крутой кулуар вниз","crux"],
+  ["13:50","湯の平","Дно кальдеры, 2050 м","node"],
+  ["14:10","賽の河原","Развилка на конус","node"],
+  ["15:30","前掛山","Под кратером, 2524 м. Золотой час","summit"],
+  ["16:40","湯の平","Возврат на дно кальдеры","node"],
+  ["17:15","草すべり","Взлёт на гребень","crux"],
+  ["17:44","—","Закат. Фонари из рюкзака","crux"],
+  ["17:55","トーミの頭","Выход на гребень в темноте","peak"],
+  ["18:45","車坂峠","Финиш. 中コース","node"]
+];
+
+/* Температуры */
+var WEATHER = [
+  ["9:45" ,"車坂峠","1973 м",14,"start"],
+  ["11–13","Гребень","2250–2400 м",16,"peak"],
+  ["14:00","湯の平","2050 м",17,"low"],
+  ["15:30","前掛山","2524 м",13,"summit"],
+  ["18:00","草すべり","2000–2300 м",10,"dark"],
+  ["18:45","車坂峠","1973 м",9,"finish"]
+];
+
+/* Снаряжение */
+var KIT = [
+  ["На себе","не хлопок — он мокнет и не сохнет",[
+    ["Синтетика или <b>меринос</b>",1],["Трекинговые штаны",1],["Лёгкий флис",1],["Кепка",1],["Очки",1],["SPF 50",1]
+  ]],
+  ["В рюкзаке","достаём на вершине и на спуске",[
+    ["Ветровка или <b>хардшелл</b>",1],["Пуховик",1],["Перчатки",1],["Шапка или бафф",1],["Запасные носки",1],["<b>Гетры</b> — от пепла",1]
+  ]],
+  ["Обязательное","без этого не выходим",[
+    ["<b>Фонарь на каждого</b>",1],["Запасные батарейки",1],["Вода <b>2–2,5 л</b> на человека",1],["Еда на 9 часов",1],["Палки",1],["Офлайн-трек в <b>YAMAP</b>",1]
+  ]]
+];
+
+/* Суммарный набор по профилю */
+var TOTAL_UP = 0;
+for (var pi=1; pi<PROFILE.length; pi++){ var dd=PROFILE[pi][1]-PROFILE[pi-1][1]; if(dd>0) TOTAL_UP+=dd; }
+
+/* Интерполяция состояния по километражу */
+function stateAtKm(km){
+  var P=PROFILE, i=0;
+  for (i=0;i<P.length-1;i++){ if (km<=P[i+1][0]) break; }
+  var a=P[i], b=P[Math.min(i+1,P.length-1)];
+  var t = b[0]===a[0] ? 0 : (km-a[0])/(b[0]-a[0]);
+  var alt = lerp(a[1],b[1],t);
+  /* набор высоты до текущей точки */
+  var up=0;
+  for (var k=1;k<P.length;k++){
+    var lo=P[k-1], hi=P[k];
+    if (km<=lo[0]) break;
+    var f = km>=hi[0] ? 1 : (km-lo[0])/(hi[0]-lo[0]);
+    var d = (hi[1]-lo[1])*f;
+    if (d>0) up+=d;
+  }
+  var near = t<0.5?a:b;
+  return { alt:alt, up:up, jp:near[2]||"—", ru:near[3]||"", time:timeAtKm(km) };
+}
+function parseT(s){ var p=s.split(":"); return (+p[0])*60+(+p[1]); }
+function fmtT(m){ m=Math.round(m); var h=Math.floor(m/60), mm=m%60; return h+":"+(mm<10?"0":"")+mm; }
+function timeAtKm(km){
+  var pts=[];
+  for (var i=0;i<PROFILE.length;i++) if (PROFILE[i][4]) pts.push([PROFILE[i][0],parseT(PROFILE[i][4])]);
+  if (km<=pts[0][0]) return fmtT(pts[0][1]);
+  for (var k=0;k<pts.length-1;k++){
+    if (km<=pts[k+1][0]){
+      var t=(km-pts[k][0])/(pts[k+1][0]-pts[k][0]);
+      return fmtT(lerp(pts[k][1],pts[k+1][1],t));
+    }
+  }
+  return fmtT(pts[pts.length-1][1]);
+}
+function lightAtKm(km){
+  for (var i=0;i<BANDS.length;i++) if (km<=BANDS[i][1]) return BANDS[i][4];
+  return BANDS[BANDS.length-1][4];
+}
+
+/* =====================================================================
+   2. РЕЛЬЕФ АСАМЫ (аналитическая высотная функция, метры)
+   Система координат: x — восток (км), n — север (км), начало — кратер 釜山.
+   ===================================================================== */
+
+/* Гребень соммы Куробу — полумесяц, открытый на восток */
+var RIDGE = [
+  [-4.15,-1.75,1973],[-3.75,-1.35,2085],[-3.35,-1.00,2160],[-2.95,-0.68,2232],
+  [-2.58,-0.38,2295],[-2.44,-0.05,2358],[-2.35, 0.30,2404],[-2.22, 0.62,2382],
+  [-2.08, 0.92,2366],[-1.92, 1.22,2341],[-1.74, 1.52,2319],[-1.56, 1.82,2282],
+  [-1.40, 2.08,2254],[-1.20, 2.32,2140],[-0.96, 2.48,2055]
+];
+
+function nearestRidge(x,n){
+  var bd=1e9, bh=0, bp=2.5;
+  for (var i=0;i<RIDGE.length-1;i++){
+    var ax=RIDGE[i][0], an=RIDGE[i][1], bx=RIDGE[i+1][0], bn=RIDGE[i+1][1];
+    var dx=bx-ax, dn=bn-an, L=dx*dx+dn*dn;
+    var t = L>0 ? clamp(((x-ax)*dx+(n-an)*dn)/L,0,1) : 0;
+    var px=ax+dx*t, pn=an+dn*t;
+    var d=Math.hypot(x-px,n-pn);
+    if (d<bd){ bd=d; bh=lerp(RIDGE[i][2],RIDGE[i+1][2],t); bp=Math.hypot(px,pn); }
+  }
+  return {d:bd,h:bh,pr:bp};
+}
+
+function elevation(x,n){
+  /* широкий щит вулканического массива */
+  var R = Math.hypot(x+1.05, n-0.28);
+  var h = 1430 + 640*smoothstep(6.4,1.1,R);
+
+  /* конус Маэкакэ */
+  var r = Math.hypot(x,n);
+  if (r<2.4){
+    var cone = 2568 - 528*Math.pow(clamp(r/1.46,0,1),1.22);
+    h = smax(h, cone, 55);
+  }
+  /* кратер 釜山 */
+  var cr = Math.hypot(x-0.02,n-0.04);
+  h -= 205*Math.exp(-Math.pow(cr/0.235,4));
+  /* внешний вал кратера */
+  h += 34*Math.exp(-Math.pow((cr-0.30)/0.13,2));
+
+  /* гребень соммы, асимметричный: внутрь — обрыв, наружу — пологий склон */
+  var rg = nearestRidge(x,n);
+  /* сторона гребня: внутрь кальдеры — обрыв, наружу — пологий склон */
+  var inner = r < rg.pr;
+  var k = inner ? 1700 : 720;
+  var ridgeH = rg.h - k*Math.pow(rg.d,1.55);
+  h = smax(h, ridgeH, 48);
+
+  /* прорезь Jバンド между 鋸岳 и 仙人岳 */
+  var jx=-1.30, jn=1.98;
+  var jd=Math.hypot(x-jx,n-jn);
+  h -= 108*Math.exp(-Math.pow(jd/0.22,2));
+
+  /* радиальные промоины на конусе */
+  if (r>0.32 && r<1.75){
+    var ang=Math.atan2(n,x);
+    h += Math.sin(ang*23 + fbm(x*1.7,n*1.7,2)*4.0)*13*smoothstep(0.34,0.72,r)*smoothstep(1.78,1.15,r);
+  }
+  /* эрозия внешнего склона соммы */
+  h += Math.sin(Math.atan2(n-0.28,x+1.05)*15 + fbm(x*0.9+3,n*0.9+3,2)*5.0)*7*smoothstep(2.9,4.4,R)*smoothstep(6.6,4.6,R);
+
+  /* шум */
+  h += (fbm(x*0.85+40,n*0.85+17,4)-0.5)*72;
+  h += (fbm(x*3.6+7,n*3.6+91,3)-0.5)*22;
+  return h;
+}
+
+/* =====================================================================
+   3. НИТКА МАРШРУТА В ПЛАНЕ
+   ===================================================================== */
+var TRACK = [
+  [-4.15,-1.75],[-3.96,-1.59],[-3.73,-1.38],[-3.52,-1.17],[-3.35,-1.00],
+  [-3.13,-0.85],[-2.93,-0.69],[-2.73,-0.53],[-2.58,-0.38],
+  [-2.48,-0.13],[-2.41, 0.07],[-2.35, 0.30],
+  [-2.27, 0.50],[-2.18, 0.71],[-2.08, 0.92],
+  [-1.98, 1.15],[-1.86, 1.34],[-1.74, 1.52],
+  [-1.62, 1.75],[-1.51, 1.92],[-1.40, 2.08],
+  [-1.31, 2.01],[-1.20, 1.92],[-1.08, 1.81],[-0.99, 1.69],
+  [-1.03, 1.49],[-1.10, 1.27],[-1.18, 1.04],[-1.26, 0.79],[-1.34, 0.57],
+  [-1.31, 0.33],[-1.26, 0.15],
+  [-1.04, 0.02],[-0.81,-0.10],[-0.59,-0.22],[-0.39,-0.32],[-0.17,-0.40],[0.03,-0.46],[0.15,-0.45],
+  /* возврат */
+  [0.00,-0.44],[-0.20,-0.39],[-0.42,-0.31],[-0.64,-0.21],[-0.86,-0.09],[-1.08, 0.02],[-1.26, 0.16],
+  [-1.34, 0.42],[-1.46, 0.55],
+  /* 草すべり вверх на トーミの頭 */
+  [-1.67, 0.43],[-1.87, 0.27],[-2.10, 0.08],[-2.34,-0.13],[-2.58,-0.38],
+  /* 中コース вниз */
+  [-2.79,-0.63],[-3.01,-0.89],[-3.26,-1.11],[-3.51,-1.33],[-3.79,-1.57],[-4.15,-1.75]
+];
+
+/* Подписи вершин в 3D */
+var MARKS = [
+  [-4.15,-1.75,"車坂峠","1973","node"],
+  [-2.58,-0.38,"トーミの頭","2295","peak"],
+  [-2.35, 0.30,"黒斑山","2404","peak"],
+  [-1.74, 1.52,"仙人岳","2319","peak"],
+  [-1.40, 2.08,"鋸岳","2254","peak"],
+  [-1.42, 0.56,"湯の平","2050","low"],
+  [ 0.15,-0.45,"前掛山","2524","summit"],
+  [ 0.02, 0.04,"釜山","2568 · закрыт","crater"]
+];
+
+window.__ASAMA__ = {
+  clamp:clamp, lerp:lerp, smoothstep:smoothstep, elevation:elevation,
+  PROFILE:PROFILE, BANDS:BANDS, CUTS:CUTS, TIMETABLE:TIMETABLE, WEATHER:WEATHER, KIT:KIT,
+  TRACK:TRACK, MARKS:MARKS, TOTAL_UP:TOTAL_UP,
+  stateAtKm:stateAtKm, lightAtKm:lightAtKm, timeAtKm:timeAtKm, RM:RM
+};
+})();
+</script>
+
+<script>
+/* =====================================================================
+   3D: рельеф Асамы, нитка маршрута и свет, меняющийся вместе со скроллом
+   ===================================================================== */
+(function(){
+"use strict";
+var A = window.__ASAMA__;
+if (!A || typeof THREE === "undefined") return;
+
+var clamp=A.clamp, lerp=A.lerp, smoothstep=A.smoothstep, elevation=A.elevation;
+var VEX = 1.60;                       /* вертикальное преувеличение */
+function H(m){ return m/1000*VEX; }
+
+var stage = document.getElementById("stage");
+var renderer, scene, camera, sun, hemi, ambient;
+var terrain, skyMat, sunSprite, stars, steamGeo, steamData, ashGeo, ashData;
+var tubeGeo, tubeMesh, glowMesh, curve, head, headHalo, headLight, labelGroup;
+var TUBE_SEGS = 1100, TUBE_RADIAL = 6, tubeIndexTotal = 0;
+
+/* ---------- свет по ходу дня ---------- */
+var DAY = [
+  {p:0.00, lbl:"облачно",      sky:["#8C96A2","#A6AFBA","#C3CAD2"], sun:"#C9D1DB", si:0.55, amb:"#8A96A6", ai:0.68, el:34, az:105, fog:"#A2ABB6", fd:0.052, st:0},
+  {p:0.20, lbl:"ясно",         sky:["#C4D5E2","#7FA8CC","#3B6CA6"], sun:"#FFF6E4", si:1.45, amb:"#92B5D8", ai:0.38, el:60, az:172, fog:"#B7CBDB", fd:0.028, st:0},
+  {p:0.50, lbl:"золотой час",  sky:["#F2C58E","#DA9F68","#7C84A6"], sun:"#FFB765", si:1.80, amb:"#8E8296", ai:0.42, el:23, az:238, fog:"#D8AA79", fd:0.036, st:0},
+  {p:0.74, lbl:"закат 17:44",  sky:["#E4603A","#A34D57","#3B3E62"], sun:"#FF6A32", si:1.15, amb:"#6B5B73", ai:0.42, el: 2, az:262, fog:"#9B5547", fd:0.048, st:.18},
+  {p:0.88, lbl:"сумерки",      sky:["#77404A","#3D3A5B","#1A2037"], sun:"#8E4B55", si:0.38, amb:"#3B4360", ai:0.48, el:-7, az:272, fog:"#372C3A", fd:0.055, st:.62},
+  {p:1.00, lbl:"фонари",       sky:["#1A2132","#121929","#070B15"], sun:"#2E3E5E", si:0.11, amb:"#202940", ai:0.52, el:-17, az:280, fog:"#0A0F17", fd:0.062, st:1}
+];
+
+/* ---------- траектория камеры ---------- */
+var CAM = [
+  {p:0.00, pos:[-8.8,7.6,7.8],  tgt:[-1.5,3.40,0.10]},
+  {p:0.12, pos:[-6.8,6.0,4.4],  tgt:[-2.3,3.65,0.20]},
+  {p:0.24, pos:[-4.8,5.4,1.8],  tgt:[-2.0,3.70,-0.90]},
+  {p:0.38, pos:[-3.4,5.2,-3.8], tgt:[-1.5,3.60,-1.60]},
+  {p:0.50, pos:[-2.3,3.75,-0.6],tgt:[ 0.00,3.95,0.15]},
+  {p:0.62, pos:[-1.9,4.25,0.90],tgt:[ 0.12,4.10,0.45]},
+  {p:0.74, pos:[ 2.6,5.6,3.2],  tgt:[ 0.10,4.05,0.30]},
+  {p:0.86, pos:[-4.8,5.6,2.6],  tgt:[-1.8,3.65,0.10]},
+  {p:1.00, pos:[-8.4,7.0,7.0],  tgt:[-1.7,3.40,0.10]}
+];
+
+function frameAt(list,p){
+  var i=0; for (i=0;i<list.length-1;i++) if (p<=list[i+1].p) break;
+  var a=list[i], b=list[Math.min(i+1,list.length-1)];
+  var t = b.p===a.p ? 0 : smoothstep(a.p,b.p,p);
+  return {a:a,b:b,t:t};
+}
+
+var cA=new THREE.Color(), cB=new THREE.Color(), cT=new THREE.Color();
+function mixHex(h1,h2,t,out){ cA.set(h1); cB.set(h2); out.copy(cA).lerp(cB,t); return out; }
+
+/* =====================================================================
+   ПОСТРОЕНИЕ СЦЕНЫ
+   ===================================================================== */
+function build(){
+  renderer = new THREE.WebGLRenderer({antialias:true, alpha:false, powerPreference:"high-performance"});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1, 1.75));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.06;
+  stage.appendChild(renderer.domElement);
+
+  scene = new THREE.Scene();
+  scene.fog = new THREE.FogExp2(0xA2ABB6, 0.052);
+
+  camera = new THREE.PerspectiveCamera(46, window.innerWidth/window.innerHeight, 0.05, 140);
+  camera.position.set(-8.8,7.6,7.8);
+
+  /* ---- небо ---- */
+  skyMat = new THREE.ShaderMaterial({
+    side:THREE.BackSide, depthWrite:false, fog:false,
+    uniforms:{ cH:{value:new THREE.Color("#8C96A2")}, cM:{value:new THREE.Color("#A6AFBA")}, cZ:{value:new THREE.Color("#C3CAD2")} },
+    vertexShader:"varying vec3 vP; void main(){ vP = position; gl_Position = projectionMatrix*modelViewMatrix*vec4(position,1.0); }",
+    fragmentShader:[
+      "uniform vec3 cH; uniform vec3 cM; uniform vec3 cZ; varying vec3 vP;",
+      "void main(){",
+      "  float h = normalize(vP).y;",
+      "  vec3 c = mix(cH, cM, smoothstep(-0.08, 0.26, h));",
+      "  c = mix(c, cZ, smoothstep(0.20, 0.80, h));",
+      "  gl_FragColor = vec4(c, 1.0);",
+      "}"].join("\n")
+  });
+  scene.add(new THREE.Mesh(new THREE.SphereGeometry(70,32,20), skyMat));
+
+  /* ---- свет ---- */
+  sun = new THREE.DirectionalLight(0xC9D1DB, 0.55);
+  scene.add(sun);
+  hemi = new THREE.HemisphereLight(0x8A96A6, 0x22201C, 0.68);
+  scene.add(hemi);
+  ambient = new THREE.AmbientLight(0x3A3F46, 0.22);
+  scene.add(ambient);
+
+  buildTerrain();
+  buildRoute();
+  buildStars();
+  buildSun();
+  buildSteam();
+  buildAsh();
+  buildLabels();
+
+  window.addEventListener("resize", onResize, {passive:true});
+}
+
+/* ---------- рельеф ---------- */
+function buildTerrain(){
+  var SEG = 224, SIZE = 9.6, CX = -1.4, CN = 0.2;
+  var geo = new THREE.PlaneGeometry(SIZE, SIZE, SEG, SEG);
+  geo.rotateX(-Math.PI/2);
+  geo.translate(CX, 0, -CN);
+
+  var pos = geo.attributes.position, count = pos.count;
+  var elev = new Float32Array(count);
+  var i, ix, iy, W = SEG+1;
+
+  for (i=0;i<count;i++){
+    var x = pos.getX(i), z = pos.getZ(i);
+    var e = elevation(x, -z);
+    elev[i] = e;
+    pos.setY(i, H(e));
+  }
+
+  /* цвет: высота × крутизна × тип породы */
+  var STOPS = [[1380,0x1A1E16],[1820,0x24281D],[2060,0x2C2F25],[2220,0x36362D],[2390,0x424036],[2570,0x514D44]];
+  var col = new Float32Array(count*3);
+  var c = new THREE.Color(), s1 = new THREE.Color(), s2 = new THREE.Color();
+  var scoria = new THREE.Color(0x453B33), oxid = new THREE.Color(0x5E3E2E), shade = new THREE.Color(0x21201D);
+
+  for (i=0;i<count;i++){
+    ix = i % W; iy = (i / W) | 0;
+    var e = elev[i];
+    /* крутизна по соседям сетки */
+    var il = elev[i - (ix>0?1:0)], ir = elev[i + (ix<SEG?1:0)];
+    var iu = elev[i - (iy>0?W:0)], id = elev[i + (iy<SEG?W:0)];
+    var cell = SIZE/SEG*1000;
+    var grad = Math.hypot((ir-il)/(2*cell), (id-iu)/(2*cell));
+    var steep = smoothstep(0.42, 1.05, grad);
+
+    /* базовый цвет по высоте */
+    var k=0; while (k<STOPS.length-2 && e>STOPS[k+1][0]) k++;
+    var t = clamp((e-STOPS[k][0])/(STOPS[k+1][0]-STOPS[k][0]),0,1);
+    s1.setHex(STOPS[k][1]); s2.setHex(STOPS[k+1][1]);
+    c.copy(s1).lerp(s2,t);
+
+    /* конус: шлак и пепел, ближе к кратеру — окисленный */
+    var x = pos.getX(i), n = -pos.getZ(i), r = Math.hypot(x,n);
+    var coneMix = smoothstep(2.05, 1.05, r);
+    c.lerp(scoria, coneMix*0.82);
+    c.lerp(oxid, smoothstep(0.95, 0.30, r)*0.55);
+
+    /* обрывы темнее */
+    c.lerp(shade, steep*0.55);
+
+    /* микровариация */
+    var v = 0.93 + 0.13*((Math.sin(x*37.1+n*21.7)*0.5+0.5));
+    col[i*3] = c.r*v; col[i*3+1] = c.g*v; col[i*3+2] = c.b*v;
+  }
+
+  geo.setAttribute("color", new THREE.BufferAttribute(col,3));
+  geo.computeVertexNormals();
+
+  terrain = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({
+    vertexColors:true, roughness:0.97, metalness:0.0, flatShading:false
+  }));
+  scene.add(terrain);
+}
+
+/* ---------- маршрут ---------- */
+function buildRoute(){
+  var flat = A.TRACK.map(function(p){ return new THREE.Vector3(p[0],0,-p[1]); });
+  var base = new THREE.CatmullRomCurve3(flat, false, "catmullrom", 0.3);
+  var pts = base.getSpacedPoints(900);
+  var OFF = 0.085;
+  for (var i=0;i<pts.length;i++) pts[i].y = H(elevation(pts[i].x, -pts[i].z)) + OFF;
+  curve = new THREE.CatmullRomCurve3(pts, false, "catmullrom", 0.02);
+
+  tubeGeo = new THREE.TubeGeometry(curve, TUBE_SEGS, 0.028, TUBE_RADIAL, false);
+  tubeIndexTotal = tubeGeo.index.count;
+  tubeMesh = new THREE.Mesh(tubeGeo, new THREE.MeshBasicMaterial({color:0xFF7A45, fog:false}));
+  tubeMesh.renderOrder = 4;
+  scene.add(tubeMesh);
+
+  var glowGeo = new THREE.TubeGeometry(curve, TUBE_SEGS, 0.085, TUBE_RADIAL, false);
+  glowMesh = new THREE.Mesh(glowGeo, new THREE.MeshBasicMaterial({
+    color:0xE2542B, transparent:true, opacity:0.20, blending:THREE.AdditiveBlending,
+    depthWrite:false, fog:false
+  }));
+  glowMesh.renderOrder = 3;
+  scene.add(glowMesh);
+
+  /* призрак всего кольца — видно целиком с первого кадра */
+  var ghost = new THREE.Mesh(new THREE.TubeGeometry(curve, 420, 0.014, 4, false),
+    new THREE.MeshBasicMaterial({color:0xBFC6CE, transparent:true, opacity:0.30, depthWrite:false, fog:false}));
+  ghost.renderOrder = 2;
+  scene.add(ghost);
+
+  tubeGeo.setDrawRange(0,0);
+  glowGeo.setDrawRange(0,0);
+
+  head = new THREE.Mesh(new THREE.IcosahedronGeometry(0.048,0),
+    new THREE.MeshBasicMaterial({color:0xFFE6C9, fog:false}));
+  head.renderOrder = 6; scene.add(head);
+
+  headHalo = new THREE.Sprite(new THREE.SpriteMaterial({
+    map:radialTexture(128, "rgba(255,196,130,1)"), color:0xFFB169,
+    transparent:true, opacity:0.85, blending:THREE.AdditiveBlending, depthWrite:false, depthTest:false, fog:false
+  }));
+  headHalo.scale.set(0.62,0.62,1); headHalo.renderOrder = 7; scene.add(headHalo);
+
+  headLight = new THREE.PointLight(0xFFB169, 0, 1.6, 2);
+  scene.add(headLight);
+}
+
+function radialTexture(size, inner){
+  var cv = document.createElement("canvas"); cv.width = cv.height = size;
+  var g = cv.getContext("2d");
+  var rg = g.createRadialGradient(size/2,size/2,0,size/2,size/2,size/2);
+  rg.addColorStop(0, inner);
+  rg.addColorStop(0.28, "rgba(255,150,80,.42)");
+  rg.addColorStop(1, "rgba(255,120,60,0)");
+  g.fillStyle = rg; g.fillRect(0,0,size,size);
+  var tx = new THREE.CanvasTexture(cv); tx.encoding = THREE.sRGBEncoding; return tx;
+}
+
+/* ---------- солнце ---------- */
+function buildSun(){
+  var cv = document.createElement("canvas"); cv.width = cv.height = 256;
+  var g = cv.getContext("2d");
+  var rg = g.createRadialGradient(128,128,0,128,128,128);
+  rg.addColorStop(0,"rgba(255,255,255,1)");
+  rg.addColorStop(0.12,"rgba(255,244,214,.95)");
+  rg.addColorStop(0.3,"rgba(255,190,120,.35)");
+  rg.addColorStop(1,"rgba(255,160,90,0)");
+  g.fillStyle = rg; g.fillRect(0,0,256,256);
+  var tx = new THREE.CanvasTexture(cv); tx.encoding = THREE.sRGBEncoding;
+  sunSprite = new THREE.Sprite(new THREE.SpriteMaterial({
+    map:tx, transparent:true, blending:THREE.AdditiveBlending, depthWrite:false, depthTest:false, fog:false
+  }));
+  sunSprite.scale.set(11,11,1); sunSprite.renderOrder = 1;
+  scene.add(sunSprite);
+}
+
+/* ---------- звёзды ---------- */
+function buildStars(){
+  var N = 900, p = new Float32Array(N*3), sz = new Float32Array(N);
+  for (var i=0;i<N;i++){
+    var th = Math.random()*Math.PI*2, ph = Math.acos(Math.random()*0.92+0.04);
+    var R = 60;
+    p[i*3]   = R*Math.sin(ph)*Math.cos(th);
+    p[i*3+1] = R*Math.cos(ph);
+    p[i*3+2] = R*Math.sin(ph)*Math.sin(th);
+    sz[i] = Math.random()*0.5+0.16;
+  }
+  var g = new THREE.BufferGeometry();
+  g.setAttribute("position", new THREE.BufferAttribute(p,3));
+  g.setAttribute("size", new THREE.BufferAttribute(sz,1));
+  stars = new THREE.Points(g, new THREE.PointsMaterial({
+    color:0xE9EEF6, size:0.34, sizeAttenuation:true, transparent:true, opacity:0,
+    depthWrite:false, fog:false
+  }));
+  scene.add(stars);
+}
+
+/* ---------- пар из кратера ---------- */
+function buildSteam(){
+  var N = 420;
+  var pos = new Float32Array(N*3);
+  steamData = [];
+  for (var i=0;i<N;i++){
+    steamData.push({ age:Math.random(), sp:0.18+Math.random()*0.22, a:Math.random()*Math.PI*2, rr:Math.random()*0.16 });
+    pos[i*3]=0; pos[i*3+1]=H(2360); pos[i*3+2]=0;
+  }
+  steamGeo = new THREE.BufferGeometry();
+  steamGeo.setAttribute("position", new THREE.BufferAttribute(pos,3));
+  var pm = new THREE.PointsMaterial({
+    color:0xD8DCE0, size:0.115, sizeAttenuation:true, transparent:true, opacity:0.15,
+    depthWrite:false, blending:THREE.NormalBlending
+  });
+  var pts = new THREE.Points(steamGeo, pm);
+  pts.renderOrder = 2;
+  scene.add(pts);
+  steamGeo.userData.mat = pm;
+}
+
+/* ---------- пепельная взвесь ---------- */
+function buildAsh(){
+  var N = RM ? 0 : 700;
+  var pos = new Float32Array(Math.max(N,1)*3);
+  ashData = [];
+  for (var i=0;i<N;i++){
+    var x=-1.4+(Math.random()-0.5)*11, y=2.4+Math.random()*3.4, z=-0.2+(Math.random()-0.5)*11;
+    ashData.push({x:x,y:y,z:z, vy:-0.01-Math.random()*0.02, ph:Math.random()*6.28});
+    pos[i*3]=x; pos[i*3+1]=y; pos[i*3+2]=z;
+  }
+  ashGeo = new THREE.BufferGeometry();
+  ashGeo.setAttribute("position", new THREE.BufferAttribute(pos,3));
+  var m = new THREE.PointsMaterial({color:0xBFC3B8, size:0.028, sizeAttenuation:true,
+    transparent:true, opacity:0.32, depthWrite:false});
+  scene.add(new THREE.Points(ashGeo, m));
+  ashGeo.userData.mat = m;
+}
+var RM = A.RM;
+
+/* ---------- подписи вершин ---------- */
+function labelTexture(jp, alt, kind){
+  var W=512,Hh=160, cv=document.createElement("canvas");
+  var dpr=2; cv.width=W*dpr; cv.height=Hh*dpr;
+  var g=cv.getContext("2d"); g.scale(dpr,dpr);
+  var accent = kind==="summit" ? "#FF8A52" : kind==="crater" ? "#F0B429" : kind==="low" ? "#7FB6D4" : "#E6E7DE";
+  g.textBaseline="middle";
+  /* маркер */
+  g.strokeStyle=accent; g.lineWidth=1.5;
+  g.beginPath(); g.arc(16,80,6.5,0,6.283); g.stroke();
+  g.fillStyle=accent; g.beginPath(); g.arc(16,80,2.6,0,6.283); g.fill();
+  g.beginPath(); g.moveTo(26,80); g.lineTo(44,80); g.stroke();
+  /* имя */
+  g.fillStyle="#F2F1E9";
+  g.font='500 34px "Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",sans-serif';
+  g.fillText(jp, 54, 68);
+  /* высота */
+  g.fillStyle=accent;
+  g.font='500 20px "IBM Plex Mono",monospace';
+  g.fillText(alt, 54, 100);
+  var tx=new THREE.CanvasTexture(cv); tx.encoding=THREE.sRGBEncoding; tx.minFilter=THREE.LinearFilter;
+  return tx;
+}
+function buildLabels(){
+  labelGroup = new THREE.Group(); scene.add(labelGroup);
+  A.MARKS.forEach(function(m){
+    var x=m[0], n=m[1];
+    var y = H(elevation(x,n)) + 0.30;
+    var sp = new THREE.Sprite(new THREE.SpriteMaterial({
+      map:labelTexture(m[2],m[3],m[4]), transparent:true, depthWrite:false, depthTest:false,
+      opacity:0, fog:false
+    }));
+    sp.position.set(x, y, -n);
+    sp.center.set(0.02, 0.5);
+    sp.scale.set(1.9, 0.594, 1);
+    sp.renderOrder = 9;
+    sp.userData.kind = m[4];
+    labelGroup.add(sp);
+
+    var pin = new THREE.Mesh(new THREE.CylinderGeometry(0.006,0.006,0.24,4),
+      new THREE.MeshBasicMaterial({color: m[4]==="summit"?0xFF8A52:0x9AA090, transparent:true, opacity:0.55, fog:false}));
+    pin.position.set(x, y-0.14, -n);
+    labelGroup.add(pin);
+  });
+  if (document.fonts && document.fonts.ready){
+    document.fonts.ready.then(function(){
+      var i=0;
+      labelGroup.children.forEach(function(o){
+        if (o.isSprite){ o.material.map = labelTexture(A.MARKS[i][2],A.MARKS[i][3],A.MARKS[i][4]); o.material.needsUpdate=true; i++; }
+      });
+    });
+  }
+}
+
+/* =====================================================================
+   АНИМАЦИЯ
+   ===================================================================== */
+var scrollP = 0, journey = 0, mx = 0, my = 0, tmx = 0, tmy = 0;
+var tmpV = new THREE.Vector3(), tgtV = new THREE.Vector3(), camV = new THREE.Vector3();
+
+function applyDay(p){
+  var f = frameAt(DAY,p), a=f.a, b=f.b, t=f.t;
+  mixHex(a.sky[0],b.sky[0],t, skyMat.uniforms.cH.value);
+  mixHex(a.sky[1],b.sky[1],t, skyMat.uniforms.cM.value);
+  mixHex(a.sky[2],b.sky[2],t, skyMat.uniforms.cZ.value);
+
+  mixHex(a.sun,b.sun,t, cT); sun.color.copy(cT);
+  sun.intensity = lerp(a.si,b.si,t);
+  mixHex(a.amb,b.amb,t, cT); hemi.color.copy(cT);
+  hemi.intensity = lerp(a.ai,b.ai,t);
+  hemi.groundColor.setHex(0x241F1A);
+
+  var el = lerp(a.el,b.el,t)*Math.PI/180;
+  var az = lerp(a.az,b.az,t)*Math.PI/180;
+  var R = 40;
+  var sx = R*Math.cos(el)*Math.sin(az);
+  var sy = R*Math.sin(el);
+  var sz = R*Math.cos(el)*Math.cos(az);
+  sun.position.set(sx,sy,sz);
+
+  sunSprite.position.set(sx*1.4, sy*1.4, sz*1.4);
+  mixHex(a.sun,b.sun,t,cT); sunSprite.material.color.copy(cT);
+  sunSprite.material.opacity = clamp(smoothstep(-0.16,0.06,Math.sin(el))*1.1, 0, 1)*lerp(0.55,1,smoothstep(0,0.6,p));
+  var ss = lerp(10,20,smoothstep(0.35,0.85,p));
+  sunSprite.scale.set(ss,ss,1);
+
+  mixHex(a.fog,b.fog,t, cT);
+  scene.fog.color.copy(cT);
+  scene.fog.density = lerp(a.fd,b.fd,t);
+
+  stars.material.opacity = lerp(a.st,b.st,t)*0.9;
+  if (steamGeo) steamGeo.userData.mat.color.copy(sun.color).lerp(new THREE.Color(0xFFFFFF),0.35);
+  if (ashGeo) ashGeo.userData.mat.opacity = lerp(0.34,0.10,smoothstep(0.6,1,p));
+
+  var lbl = document.getElementById("hudLight");
+  if (lbl) lbl.textContent = lerp(0,1,t)<0.5 ? a.lbl : b.lbl;
+}
+
+function applyCamera(p, time){
+  var f = frameAt(CAM,p), a=f.a, b=f.b, t=f.t;
+  camV.set(lerp(a.pos[0],b.pos[0],t), lerp(a.pos[1],b.pos[1],t), lerp(a.pos[2],b.pos[2],t));
+  tgtV.set(lerp(a.tgt[0],b.tgt[0],t), lerp(a.tgt[1],b.tgt[1],t), lerp(a.tgt[2],b.tgt[2],t));
+  if (!RM){
+    camV.x += Math.sin(time*0.17)*0.16 + mx*0.42;
+    camV.y += Math.sin(time*0.23+1.7)*0.09 - my*0.26;
+    camV.z += Math.cos(time*0.14)*0.16 + mx*0.18;
+  }
+  /* не даём камере проваливаться под рельеф */
+  var ground = H(elevation(camV.x, -camV.z)) + 0.32;
+  if (camV.y < ground) camV.y = ground;
+  camera.position.lerp(camV, 0.085);
+  camera.lookAt(tgtV);
+}
+
+function applyRoute(j, time){
+  var n = Math.floor(j * tubeIndexTotal / (TUBE_RADIAL*6)) * (TUBE_RADIAL*6);
+  tubeGeo.setDrawRange(0, Math.max(n,0));
+  glowMesh.geometry.setDrawRange(0, Math.max(n,0));
+  var t = clamp(j, 0.0005, 0.9995);
+  curve.getPointAt(t, tmpV);
+  head.position.copy(tmpV);
+  headHalo.position.copy(tmpV);
+  headLight.position.copy(tmpV);
+  var on = j>0.002 && j<0.999;
+  head.visible = headHalo.visible = on;
+  var pulse = 0.55 + 0.45*Math.sin(time*3.1);
+  headHalo.scale.setScalar(0.5 + pulse*0.22);
+  headHalo.material.opacity = on ? 0.55+0.35*pulse : 0;
+  headLight.intensity = on ? (j>0.82 ? 2.4+pulse*1.2 : 0.6) : 0;
+}
+
+function updateSteam(dt){
+  if (!steamGeo) return;
+  var p = steamGeo.attributes.position.array;
+  var base = H(2360);
+  for (var i=0;i<steamData.length;i++){
+    var s = steamData[i];
+    s.age += dt*s.sp*0.42;
+    if (s.age>1){ s.age=0; s.a=Math.random()*Math.PI*2; s.rr=Math.random()*0.16; }
+    var a = s.age;
+    var rise = a*0.95;
+    var spread = 0.08 + a*0.40;
+    p[i*3]   = Math.cos(s.a)*s.rr*4*spread + a*a*0.75;       /* снос ветром на восток */
+    p[i*3+1] = base + rise;
+    p[i*3+2] = Math.sin(s.a)*s.rr*4*spread + a*a*0.22;
+  }
+  steamGeo.attributes.position.needsUpdate = true;
+  steamGeo.userData.mat.opacity = 0.17;
+}
+
+function updateAsh(dt, time){
+  if (!ashGeo || !ashData.length) return;
+  var p = ashGeo.attributes.position.array;
+  for (var i=0;i<ashData.length;i++){
+    var d = ashData[i];
+    d.y += d.vy*dt;
+    if (d.y < 2.2){ d.y = 6.0; }
+    p[i*3]   = d.x + Math.sin(time*0.35+d.ph)*0.11;
+    p[i*3+1] = d.y;
+    p[i*3+2] = d.z + Math.cos(time*0.29+d.ph)*0.11;
+  }
+  ashGeo.attributes.position.needsUpdate = true;
+}
+
+function updateLabels(p){
+  if (!labelGroup) return;
+  labelGroup.children.forEach(function(o){
+    if (!o.isSprite) return;
+    var d = camera.position.distanceTo(o.position);
+    var vis = smoothstep(9.5,6.2,d)*smoothstep(0.7,1.4,d);
+    o.material.opacity = clamp(vis,0,1)*0.95;
+    var sc = clamp(d*0.20, 0.9, 2.6);
+    o.scale.set(sc, sc*0.3125, 1);
+  });
+}
+
+function onResize(){
+  if (!renderer) return;
+  camera.aspect = window.innerWidth/window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+var last = 0;
+function loop(now){
+  requestAnimationFrame(loop);
+  var time = now*0.001;
+  var dt = Math.min(last ? time-last : 0.016, 0.05); last = time;
+
+  mx += (tmx-mx)*0.05; my += (tmy-my)*0.05;
+
+  applyDay(scrollP);
+  applyCamera(scrollP, time);
+  applyRoute(journey, time);
+  updateSteam(dt);
+  if (!RM) updateAsh(dt, time);
+  updateLabels(scrollP);
+
+  renderer.render(scene, camera);
+}
+
+/* =====================================================================
+   СКРОЛЛ
+   ===================================================================== */
+var targetP = 0;
+function readScroll(){
+  var h = document.documentElement.scrollHeight - window.innerHeight;
+  targetP = h>0 ? clamp(window.scrollY/h, 0, 1) : 0;
+}
+function tickScroll(){
+  scrollP += (targetP - scrollP)*0.09;
+  journey = clamp((scrollP-0.045)/(0.945-0.045), 0, 1);
+  if (window.__onJourney) window.__onJourney(journey, scrollP);
+  requestAnimationFrame(tickScroll);
+}
+
+window.addEventListener("scroll", readScroll, {passive:true});
+window.addEventListener("pointermove", function(e){
+  tmx = (e.clientX/window.innerWidth - 0.5)*2;
+  tmy = (e.clientY/window.innerHeight - 0.5)*2;
+}, {passive:true});
+
+try {
+  var test = document.createElement("canvas");
+  var ok = !!(window.WebGLRenderingContext && (test.getContext("webgl") || test.getContext("experimental-webgl")));
+  if (!ok) throw new Error("no webgl");
+  build();
+  readScroll(); scrollP = targetP;
+  requestAnimationFrame(loop);
+  requestAnimationFrame(tickScroll);
+  var fb = document.getElementById("fallback"); if (fb) fb.style.opacity = "0";
+} catch(err){
+  readScroll(); scrollP = targetP;
+  requestAnimationFrame(tickScroll);
+  if (stage) stage.style.display = "none";
+}
+})();
+</script>
+
+<script>
+/* =====================================================================
+   ИНТЕРФЕЙС: профиль высот, тайминг, погода, снаряжение, HUD
+   ===================================================================== */
+(function(){
+"use strict";
+var A = window.__ASAMA__;
+if (!A) return;
+var clamp=A.clamp, lerp=A.lerp;
+var KM_MAX = 18.6;
+
+function el(id){ return document.getElementById(id); }
+function n2(v){ return Math.round(v*100)/100; }
+
+/* =====================================================================
+   1. ПРОФИЛЬ ВЫСОТ
+   ===================================================================== */
+var VB_W=1000, VB_H=380, PL=54, PR=26, PT=32, PB=66;
+var PW = VB_W-PL-PR, PH = VB_H-PT-PB;
+var ALT_MIN=1900, ALT_MAX=2600;
+function X(km){ return PL + km/KM_MAX*PW; }
+function Y(alt){ return PT + (1-(alt-ALT_MIN)/(ALT_MAX-ALT_MIN))*PH; }
+
+function smoothPath(pts){
+  if (pts.length<2) return "";
+  var d = "M"+n2(pts[0][0])+","+n2(pts[0][1]);
+  for (var i=0;i<pts.length-1;i++){
+    var p0=pts[i-1]||pts[i], p1=pts[i], p2=pts[i+1], p3=pts[i+2]||p2;
+    var k=0.8;
+    var c1x=p1[0]+(p2[0]-p0[0])/6*k, c1y=p1[1]+(p2[1]-p0[1])/6*k;
+    var c2x=p2[0]-(p3[0]-p1[0])/6*k, c2y=p2[1]-(p3[1]-p1[1])/6*k;
+    d += "C"+n2(c1x)+","+n2(c1y)+" "+n2(c2x)+","+n2(c2y)+" "+n2(p2[0])+","+n2(p2[1]);
+  }
+  return d;
+}
+
+function buildProfile(){
+  var svg = el("prof");
+  if (!svg) return;
+  var P = A.PROFILE;
+  var pts = P.map(function(r){ return [X(r[0]), Y(r[1])]; });
+  var line = smoothPath(pts);
+  var area = line + "L"+n2(X(KM_MAX))+","+n2(PT+PH)+" L"+n2(X(0))+","+n2(PT+PH)+" Z";
+
+  var s = [];
+  s.push('<style>',
+    '.pf-jp{font-family:"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",sans-serif;font-weight:500}',
+    '.pf-mo{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}',
+    '</style>');
+
+  /* дефы */
+  s.push('<defs>');
+  s.push('<linearGradient id="gArea" x1="0" y1="0" x2="0" y2="1">',
+         '<stop offset="0" stop-color="#E2542B" stop-opacity=".30"/>',
+         '<stop offset="1" stop-color="#E2542B" stop-opacity=".02"/></linearGradient>');
+  s.push('<linearGradient id="gLine" x1="0" y1="0" x2="1" y2="0">',
+         '<stop offset="0" stop-color="#8E99A6"/>',
+         '<stop offset="0.19" stop-color="#9FC4DC"/>',
+         '<stop offset="0.55" stop-color="#FFD9A0"/>',
+         '<stop offset="0.65" stop-color="#FF8A52"/>',
+         '<stop offset="0.84" stop-color="#E2542B"/>',
+         '<stop offset="1" stop-color="#5E6470"/></linearGradient>');
+  s.push('<clipPath id="cPlot"><rect x="'+PL+'" y="'+PT+'" width="'+PW+'" height="'+PH+'"/></clipPath>');
+  s.push('</defs>');
+
+  /* фон плота */
+  s.push('<rect x="'+PL+'" y="'+PT+'" width="'+PW+'" height="'+PH+'" fill="#0C0F14"/>');
+
+  /* световые полосы */
+  s.push('<g clip-path="url(#cPlot)">');
+  A.BANDS.forEach(function(b){
+    s.push('<rect x="'+n2(X(b[0]))+'" y="'+PT+'" width="'+n2(X(b[1])-X(b[0]))+'" height="'+PH+'" fill="'+b[2]+'" opacity="'+b[3]+'"/>');
+  });
+  s.push('</g>');
+
+  /* сетка высот */
+  [2000,2100,2200,2300,2400,2500,2600].forEach(function(a){
+    var maj = (a%200===0);
+    s.push('<line x1="'+PL+'" y1="'+n2(Y(a))+'" x2="'+(PL+PW)+'" y2="'+n2(Y(a))+'" stroke="#BEC4B4" stroke-opacity="'+(maj?.13:.06)+'" stroke-width="1"/>');
+    if (maj) s.push('<text class="pf-mo" x="'+(PL-10)+'" y="'+n2(Y(a)+4)+'" text-anchor="end" font-size="11" fill="#6A6D63">'+a+'</text>');
+  });
+  /* сетка километров */
+  for (var km=0; km<=18; km+=2){
+    s.push('<line x1="'+n2(X(km))+'" y1="'+(PT+PH)+'" x2="'+n2(X(km))+'" y2="'+(PT+PH+6)+'" stroke="#BEC4B4" stroke-opacity=".2" stroke-width="1"/>');
+    s.push('<text class="pf-mo" x="'+n2(X(km))+'" y="'+(PT+PH+22)+'" text-anchor="middle" font-size="10.5" fill="#6A6D63">'+km+'</text>');
+  }
+  s.push('<text class="pf-mo" x="'+(PL+PW)+'" y="'+(PT+PH+42)+'" text-anchor="end" font-size="10" letter-spacing="2" fill="#4E5148">КИЛОМЕТРЫ</text>');
+  s.push('<text class="pf-mo" x="'+(PL-10)+'" y="'+(PT-12)+'" text-anchor="end" font-size="10" letter-spacing="2" fill="#4E5148">М</text>');
+
+  /* заливка и линия */
+  s.push('<path d="'+area+'" fill="url(#gArea)"/>');
+  s.push('<path id="pfLine" d="'+line+'" fill="none" stroke="url(#gLine)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>');
+
+  /* дедлайны */
+  A.CUTS.forEach(function(c){
+    var col = c[3]==="hard" ? "#E2542B" : "#F0B429";
+    s.push('<line x1="'+n2(X(c[0]))+'" y1="'+PT+'" x2="'+n2(X(c[0]))+'" y2="'+(PT+PH)+'" stroke="'+col+'" stroke-opacity=".55" stroke-width="1" stroke-dasharray="3 4"/>');
+    s.push('<rect x="'+n2(X(c[0])-20)+'" y="'+(PT-20)+'" width="40" height="16" rx="2" fill="'+col+'" fill-opacity=".16" stroke="'+col+'" stroke-opacity=".5" stroke-width="1"/>');
+    s.push('<text class="pf-mo" x="'+n2(X(c[0]))+'" y="'+(PT-8.5)+'" text-anchor="middle" font-size="10.5" fill="'+col+'">'+c[1]+'</text>');
+  });
+
+  /* закат */
+  var sx = X(15.55);
+  s.push('<line x1="'+n2(sx)+'" y1="'+PT+'" x2="'+n2(sx)+'" y2="'+(PT+PH)+'" stroke="#FFB169" stroke-opacity=".7" stroke-width="1.4"/>');
+  s.push('<circle cx="'+n2(sx)+'" cy="'+(PT+PH-10)+'" r="5" fill="#FFB169" fill-opacity=".85"/>');
+  s.push('<text class="pf-mo" x="'+n2(sx+9)+'" y="'+(PT+PH-6)+'" font-size="10.5" fill="#FFB169">17:44 закат</text>');
+
+  /* точки и подписи */
+  P.forEach(function(r){
+    var k=r[5];
+    if (!k) return;
+    var x=X(r[0]), y=Y(r[1]);
+    var col = k==="summit" ? "#FF8A52" : k==="peak" ? "#9FC4DC" : k==="crux" ? "#F0B429"
+            : k==="low" ? "#7E9464" : k==="sunset" ? "#FFB169" : "#D7D8CE";
+    var rad = k==="summit" ? 5.5 : 3.6;
+    if (k==="summit") s.push('<circle cx="'+n2(x)+'" cy="'+n2(y)+'" r="12" fill="#FF8A52" fill-opacity=".16"/>');
+    s.push('<circle cx="'+n2(x)+'" cy="'+n2(y)+'" r="'+rad+'" fill="'+col+'" stroke="#0C0F14" stroke-width="1.6"/>');
+    if (k==="sunset") return;
+    var above = (k==="peak"||k==="summit"||k==="start"||k==="finish");
+    var ty = above ? y-16 : y+26;
+    var anchor = r[0]<1.2 ? "start" : (r[0]>17.4 ? "end" : "middle");
+    var fs = k==="summit" ? 15 : 12.5;
+    s.push('<text class="pf-jp" x="'+n2(x)+'" y="'+n2(ty)+'" text-anchor="'+anchor+'" font-size="'+fs+'" fill="'+(k==="summit"?"#FFC9A8":"#D7D8CE")+'">'+r[2]+'</text>');
+    if (r[4]) s.push('<text class="pf-mo" x="'+n2(x)+'" y="'+n2(above?ty-14:ty+13)+'" text-anchor="'+anchor+'" font-size="10.5" fill="'+col+'">'+r[4]+'</text>');
+  });
+
+  /* курсор наведения */
+  s.push('<g id="pfCur" opacity="0">');
+  s.push('<line id="pfCurL" x1="0" y1="'+PT+'" x2="0" y2="'+(PT+PH)+'" stroke="#EFEDE4" stroke-opacity=".45" stroke-width="1"/>');
+  s.push('<circle id="pfCurD" cx="0" cy="0" r="5" fill="#EFEDE4" stroke="#0C0F14" stroke-width="2"/>');
+  s.push('</g>');
+  /* маркер текущего положения по скроллу */
+  s.push('<g id="pfNow" opacity="0">');
+  s.push('<line id="pfNowL" x1="0" y1="'+PT+'" x2="0" y2="'+(PT+PH)+'" stroke="#FF8A52" stroke-opacity=".8" stroke-width="1.4"/>');
+  s.push('<circle id="pfNowD" cx="0" cy="0" r="6" fill="#FF8A52" stroke="#0C0F14" stroke-width="2"/>');
+  s.push('</g>');
+
+  s.push('<rect id="pfHit" x="'+PL+'" y="'+PT+'" width="'+PW+'" height="'+PH+'" fill="transparent" style="cursor:crosshair"/>');
+
+  svg.innerHTML = s.join("");
+
+  /* анимация отрисовки линии */
+  var pl = document.getElementById("pfLine");
+  if (pl && !A.RM){
+    try{
+      var L = pl.getTotalLength();
+      pl.style.strokeDasharray = L; pl.style.strokeDashoffset = L;
+      var io = new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          if (e.isIntersecting){
+            pl.style.transition = "stroke-dashoffset 2.1s cubic-bezier(.25,.8,.3,1)";
+            pl.style.strokeDashoffset = 0;
+            io.disconnect();
+          }
+        });
+      },{threshold:.2});
+      io.observe(svg);
+    }catch(e){ pl.style.strokeDashoffset = 0; }
+  }
+
+  /* наведение */
+  var tip = el("tip"), hit = document.getElementById("pfHit");
+  var cur = document.getElementById("pfCur"), curL = document.getElementById("pfCurL"), curD = document.getElementById("pfCurD");
+  if (hit) {
+    hit.addEventListener("pointermove", function(ev){
+      var r = svg.getBoundingClientRect();
+      var vx = (ev.clientX - r.left)/r.width*VB_W;
+      var km = clamp((vx-PL)/PW*KM_MAX, 0, KM_MAX);
+      var st = A.stateAtKm(km);
+      var px = X(km), py = Y(st.alt);
+      cur.setAttribute("opacity","1");
+      curL.setAttribute("x1",n2(px)); curL.setAttribute("x2",n2(px));
+      curD.setAttribute("cx",n2(px)); curD.setAttribute("cy",n2(py));
+      tip.innerHTML = '<div class="t-jp">'+st.jp+'</div>'+
+        (st.ru?'<div class="t-ru">'+st.ru+'</div>':'')+
+        '<div class="t-row"><span><b>'+st.time+'</b></span><span>'+Math.round(st.alt)+' м</span><span>'+km.toFixed(1)+' км</span></div>';
+      var shell = tip.parentNode.getBoundingClientRect();
+      var lx = ev.clientX - shell.left + 14;
+      if (lx > shell.width - 150) lx = ev.clientX - shell.left - 150;
+      tip.style.left = Math.max(6,lx)+"px";
+      tip.style.top = Math.max(6, ev.clientY - shell.top - 66)+"px";
+      tip.style.opacity = "1";
+    }, {passive:true});
+    hit.addEventListener("pointerleave", function(){
+      cur.setAttribute("opacity","0"); tip.style.opacity="0";
+    }, {passive:true});
+  }
+}
+
+/* =====================================================================
+   2. ТАЙМИНГ
+   ===================================================================== */
+function buildTimetable(){
+  var box = el("tt"); if (!box) return;
+  var h = A.TIMETABLE.map(function(r){
+    var alt = "";
+    return '<div class="tt-row" data-k="'+r[3]+'">'+
+      '<div class="tt-t">'+r[0]+'</div>'+
+      '<div class="tt-main"><span class="n jp">'+r[1]+'</span><span class="d">'+r[2]+'</span></div>'+
+      '<span class="tt-dot"></span></div>';
+  }).join("");
+  box.innerHTML = h;
+}
+
+/* =====================================================================
+   3. ПОГОДА
+   ===================================================================== */
+function tempColor(t){
+  /* 9° — ледник, 17° — тёплый янтарь */
+  var k = clamp((t-9)/8, 0, 1);
+  var c1=[127,182,212], c2=[240,170,90];
+  return "rgb("+Math.round(lerp(c1[0],c2[0],k))+","+Math.round(lerp(c1[1],c2[1],k))+","+Math.round(lerp(c1[2],c2[2],k))+")";
+}
+function buildWeather(){
+  var box = el("wxStrip"); if (!box) return;
+  box.innerHTML = A.WEATHER.map(function(r){
+    return '<div class="wx-row">'+
+      '<span class="h">'+r[0]+'</span>'+
+      '<span class="n">'+r[1]+'<small>'+r[2]+'</small></span>'+
+      '<span class="deg" style="color:'+tempColor(r[3])+'">'+r[3]+'°</span>'+
+      '</div>';
+  }).join("");
+}
+
+/* =====================================================================
+   4. СНАРЯЖЕНИЕ
+   ===================================================================== */
+function buildKit(){
+  var box = el("kit"); if (!box) return;
+  var idx = 0;
+  box.innerHTML = A.KIT.map(function(col){
+    var items = col[2].map(function(it){
+      var id = "kit-"+(idx++);
+      return '<li><label for="'+id+'"><input type="checkbox" id="'+id+'"><span class="box"></span><span class="tx">'+it[0]+'</span></label></li>';
+    }).join("");
+    return '<div class="kit-col"><h3>'+col[0]+'</h3><p class="sub">'+col[1]+'</p><ul class="kit-list">'+items+'</ul></div>';
+  }).join("");
+
+  var boxes = box.querySelectorAll('input[type=checkbox]');
+  var KEY = "asama-kit-v1";
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY)||"{}") || {}; } catch(e){ saved = {}; }
+  Array.prototype.forEach.call(boxes, function(b){
+    if (saved[b.id]) b.checked = true;
+    b.addEventListener("change", function(){
+      saved[b.id] = b.checked;
+      try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch(e){}
+      meter();
+    });
+  });
+  function meter(){
+    var done = 0;
+    Array.prototype.forEach.call(boxes, function(b){ if (b.checked) done++; });
+    var c = el("kitCount"), bar = el("kitBar");
+    if (c) c.textContent = done+" / "+boxes.length;
+    if (bar) bar.style.width = (done/boxes.length*100)+"%";
+  }
+  meter();
+}
+
+/* =====================================================================
+   5. СЧЁТЧИКИ В ШАПКЕ
+   ===================================================================== */
+function counters(){
+  var nodes = document.querySelectorAll("[data-count]");
+  Array.prototype.forEach.call(nodes, function(node){
+    var target = parseFloat(node.getAttribute("data-count"));
+    var dec = parseInt(node.getAttribute("data-dec")||"0",10);
+    var suffix = node.querySelector("i");
+    var sfx = suffix ? suffix.outerHTML : "";
+    if (A.RM){ node.innerHTML = target.toFixed(dec)+sfx; return; }
+    var t0 = null, dur = 1500;
+    function step(ts){
+      if (!t0) t0 = ts;
+      var k = clamp((ts-t0)/dur,0,1);
+      var e = 1-Math.pow(1-k,3);
+      node.innerHTML = (target*e).toFixed(dec)+sfx;
+      if (k<1) requestAnimationFrame(step);
+    }
+    setTimeout(function(){ requestAnimationFrame(step); }, 320);
+  });
+}
+
+/* =====================================================================
+   6. ПОЯВЛЕНИЕ СЕКЦИЙ
+   ===================================================================== */
+function reveals(){
+  var nodes = document.querySelectorAll(".rv");
+  if (!("IntersectionObserver" in window)){
+    Array.prototype.forEach.call(nodes, function(n){ n.classList.add("in"); });
+    return;
+  }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, {threshold:.12, rootMargin:"0px 0px -6% 0px"});
+  Array.prototype.forEach.call(nodes, function(n){ io.observe(n); });
+}
+
+/* =====================================================================
+   7. HUD + МАРКЕР НА ПРОФИЛЕ
+   ===================================================================== */
+function hud(){
+  var hudEl = el("hud"), clock = el("hudClock"), where = el("hudWhere");
+  var alt = el("hudAlt"), km = el("hudKm"), up = el("hudUp"), bar = el("hudBar");
+  var nowG, nowL, nowD;
+  var lastKm = -1;
+
+  window.__onJourney = function(j, p){
+    if (hudEl) hudEl.classList.toggle("on", p > 0.035);
+    var k = j*KM_MAX;
+    if (Math.abs(k-lastKm) < 0.01) return;
+    lastKm = k;
+    var st = A.stateAtKm(k);
+    if (clock) clock.textContent = st.time;
+    if (where) where.innerHTML = st.jp + (st.ru ? '<small>'+st.ru+'</small>' : '<small>&nbsp;</small>');
+    if (alt) alt.textContent = Math.round(st.alt);
+    if (km) km.textContent = k.toFixed(1);
+    if (up) up.textContent = Math.round(st.up);
+    if (bar) bar.style.width = (j*100)+"%";
+
+    if (!nowG){ nowG = document.getElementById("pfNow"); nowL = document.getElementById("pfNowL"); nowD = document.getElementById("pfNowD"); }
+    if (nowG){
+      var on = j>0.004 && j<0.998;
+      nowG.setAttribute("opacity", on ? "1" : "0");
+      var x = X(k), y = Y(st.alt);
+      nowL.setAttribute("x1",n2(x)); nowL.setAttribute("x2",n2(x));
+      nowD.setAttribute("cx",n2(x)); nowD.setAttribute("cy",n2(y));
+    }
+  };
+}
+
+/* =====================================================================
+   ЗАПУСК
+   ===================================================================== */
+buildProfile();
+buildTimetable();
+buildWeather();
+buildKit();
+counters();
+reveals();
+hud();
+
+/* если 3D не поднялся — гоним HUD от обычного скролла */
+if (!window.__onJourneyDriven){
+  var driven = false;
+  window.addEventListener("scroll", function(){ driven = true; }, {passive:true, once:true});
+  setTimeout(function(){
+    if (typeof window.__onJourney === "function"){
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      var p = h>0 ? clamp(window.scrollY/h,0,1) : 0;
+      window.__onJourney(clamp((p-0.045)/0.9,0,1), p);
+    }
+  }, 400);
+}
+})();
+</script>
+
+</body>
+</html>
